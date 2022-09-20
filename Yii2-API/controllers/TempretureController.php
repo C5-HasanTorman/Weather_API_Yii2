@@ -13,24 +13,19 @@ use yii\filters\VerbFilter;
  */
 class TempretureController extends Controller
 {
-
- 
     /**
      * @inheritDoc
      */
     public function behaviors()
     {
-        return array_merge(
-            parent::behaviors(),
-            [
-                'verbs' => [
-                    'class' => VerbFilter::className(),
-                    'actions' => [
-                        'delete' => ['POST'],
-                    ],
+        return array_merge(parent::behaviors(), [
+            'verbs' => [
+                'class' => VerbFilter::className(),
+                'actions' => [
+                    'delete' => ['POST'],
                 ],
-            ]
-        );
+            ],
+        ]);
     }
 
     /**
@@ -95,7 +90,11 @@ class TempretureController extends Controller
     {
         $model = $this->findModel($temp_id);
 
-        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
+        if (
+            $this->request->isPost &&
+            $model->load($this->request->post()) &&
+            $model->save()
+        ) {
             return $this->redirect(['view', 'temp_id' => $model->temp_id]);
         }
 

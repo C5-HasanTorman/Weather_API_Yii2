@@ -2,19 +2,14 @@
 
 use yii\helpers\Html;
 
-
 /** @var yii\web\View $this */
 /** @var app\models\City $model */
 
-$this->title = 'Create City';
+$this->title = 'Get Your City';
 $this->params['breadcrumbs'][] = ['label' => 'Cities', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="city-create">
-
-
-<?php echo $data;?>
-
 
     <h1><?= Html::encode($this->title) ?></h1>
 
