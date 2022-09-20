@@ -13,6 +13,8 @@ use yii\filters\VerbFilter;
  */
 class TempretureController extends Controller
 {
+
+ 
     /**
      * @inheritDoc
      */
