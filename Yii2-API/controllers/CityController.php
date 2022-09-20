@@ -147,26 +147,6 @@ class CityController extends Controller
         throw new NotFoundHttpException('The requested page does not exist.');
     }
 
-    public function actionFindAll(){
 
-        $client_1 = new Client();
-
-        $response_1 = $client_1->createRequest()
-        ->setMethod('GET')
-        ->setUrl('https://api.openweathermap.org/data/2.5/weather?lat=30.5852&lon=36.2384&appid=cce36086c4d44b8dd07cf495ec7e7c60')
-        ->send();
-
-        $data = Json::decode($response_1->data);
-
-        if ($response_1->isOk) {
-            $hasil = $data['results'];
-        }
-
-        return $this->render('home', [
-            'data' => $data,
-        ]);
-
-
-    }
 
 }

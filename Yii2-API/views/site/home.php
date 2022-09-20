@@ -4,23 +4,44 @@ use yii\helpers\Html;
 
 /** @var yii\web\View $this */
 
-$api_url = 'https://api.openweathermap.org/data/2.5/weather?q=Jordan&appid=cce36086c4d44b8dd07cf495ec7e7c60&units=metric';
-$weather_data = json_decode(file_get_contents($api_url),true);
+$api_url =
+    'https://api.openweathermap.org/data/2.5/weather?q=Jordan&appid=cce36086c4d44b8dd07cf495ec7e7c60&units=metric';
+$weather_data = json_decode(file_get_contents($api_url));
 
-$this->title = 'My Yii Application'; ?>
+
+
+$this->title = 'My Yii Application';
+?>
 
 <div  class="site-index">
-    
-    <div class="jumbotron text-center bg-transparent">
+    <div class="jumbotron text-center bg-transparent d-flex flex-column align-items-center ">
         <h1 class="display-3 pt-3">Weather Yii2 App</h1>
-    
-        <pre>
-        <?php print_r($weather_data);?>
+        <form class="mt-5">
+            <input type="text"/>
+            <button class= "btn btn-primary"> search</button>
+        </form>
+        <?php foreach ( $weather_data as $catagory) {
+            if (is_array($catagory)) {
+                foreach ($catagory as $value) {
+                    echo $value;
+                }
+            }
+        } ?>
+
+        <div class="card d-flex mt-5 ms-5" style="width: 18rem;">
+  <img src="..." class="card-img-top" alt="..."/>
+  <div class="card-body">
+    <h5 class="card-title"></h5>
+    <p class="card-text"></p>
+  </div>
+</div>
+
 
     </div>
-
     <div class="body-content">
  
 
     </div>
 </div>
+
+

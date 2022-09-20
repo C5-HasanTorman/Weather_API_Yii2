@@ -13,7 +13,6 @@ use yii\helpers\Json;
 use yii\data\ArrayDataProvider;
 use yii\httpclient\Client;
 
-
 class SiteController extends Controller
 {
     /**
@@ -133,6 +132,32 @@ class SiteController extends Controller
         return $this->render('about');
     }
 
-   
- 
+    public function actionFindAll()
+    {
+        $absoluteUrl =
+            'https://api.openweathermap.org/data/2.5/weather?lat=30.5852&lon=36.2384&appid=cce36086c4d44b8dd07cf495ec7e7c60';
+        $client_1 = new Client();
+
+        $response_1 = $client_1
+            ->createRequest()
+            ->setMethod('GET')
+            ->setUrl($absoluteUrl)
+            ->send();
+    
+        return $this->redirect('home', [
+            'response_1' => $response_1,
+        ]);
+    }
+
+    public function actionTestGet() {
+        $absoluteUrl =
+        'https://api.openweathermap.org/data/2.5/weather?lat=30.5852&lon=36.2384&appid=cce36086c4d44b8dd07cf495ec7e7c60';
+      
+       $responce =  var_dump(Yii::$app->request->$absoluteUrl);
+
+       return $this->redirect('home', [
+        'responce' => $responce,
+    ]);
+
+     }
 }
